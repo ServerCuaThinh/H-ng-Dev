@@ -31,8 +31,6 @@ for x in banner:
   sleep(0.001)
 print("\033[1;31mYouTube : \033[1;33mHuong \033[1;33mDev\033[1;32m")   
 
-
-
     # Nhập auth
 try:
   Authorization = open("Authorization.txt","x")
@@ -201,67 +199,94 @@ while True:
       baoloi(ads_id,object_id,account_id,nhanjob["data"]["type"])
       continue
     os.system(f"termux-open-url {link}")
-    for i in range(delay,-1,-1):
-      print('                                             ',end = '\r')
-      for j in [".","..","..."]:
-    	
-                        print(f"\r\033[1;37mH\033[1;36mu\033[1;35mo\033[1;32mn\033[1;31mg\033[1;34mD\033[1;33me\033[1;36mv\033[1;36m2\033[1;31m7\033[1;32m0\033[1;37m4🍉\033[1;31m [{i}] ", end='')
-                        sleep(0.06)
-                        print(f"\r\033[1;34mH\033[1;31mu\033[1;37mo\033[1;36mn\033[1;32mg\033[1;35mD\033[1;37me\033[1;33mv\033[1;32m2\033[1;32m7\033[1;33m0\033[1;36m4🍉\033[1;35m [{i}] ", end='')
-                        sleep(0.06)
-                        print(f"\r\033[1;31mH\033[1;37mu\033[1;36mo\033[1;33mn\033[1;35mg\033[1;32mD\033[1;34me\033[1;35mv\033[1;37m2\033[1;33m7\033[1;34m0\033[1;35m4🍉\033[1;34m [{i}] ", end='')
-                        sleep(0.06)
-                        print(f"\r\033[1;32mH\033[1;33mu\033[1;34mo\033[1;35mn\033[1;36mg\033[1;37mD\033[1;36me\033[1;31mv\033[1;34m2\033[1;34m7\033[1;35m0\033[1;34m4🍉\033[1;97m [{i}] ", end='')
-                        sleep(0.06)
-                        print(f"\r\033[1;37mH\033[1;34mu\033[1;35mo\033[1;36mn\033[1;32mg\033[1;33mD\033[1;31me\033[1;37mv\033[1;34m2\033[1;35m7\033[1;36m0\033[1;33m4🍉\033[1;32m [{i}] ", end='')
-                        sleep(0.06)
-                        print(f"\r\033[1;34mH\033[1;33mu\033[1;37mo\033[1;35mn\033[1;31mg\033[1;36mD\033[1;36me\033[1;32mv\033[1;37m2\033[1;36m7\033[1;37m0\033[1;32m4🍉\033[1;33m [{i}] ", end='')
-                        sleep(0.06)
-                        print(f"\r\033[1;36mH\033[1;35mu\033[1;31mo\033[1;34mn\033[1;37mg\033[1;35mD\033[1;32me\033[1;36mv\033[1;33m2\033[1;37m7\033[1;31m0\033[1;31m4🍉\033[1;36m [{i}] ", end='')
-                        sleep(0.06)
+    for remaining_time in range(delay, -1, -1):
+            colors = [
+                "\033[1;37mH\033[1;36mu\033[1;35mo\033[1;32mn\033[1;31mg \033[1;34mD\033[1;33me\033[1;36mv\033[1;36m🍉 - Tool\033[1;36m Vip \033[1;31m\033[1;32m",
+                "\033[1;34mH\033[1;31mu\033[1;37mo\033[1;36mn\033[1;32mg \033[1;35mD\033[1;37me\033[1;33mv\033[1;32m🍉 - Tool\033[1;34m Vip \033[1;31m\033[1;32m",
+                "\033[1;31mH\033[1;37mu\033[1;36mo\033[1;33mn\033[1;35mg \033[1;32mD\033[1;34me\033[1;35mv\033[1;37m🍉 - Tool\033[1;33m Vip \033[1;31m\033[1;32m",
+                "\033[1;32mH\033[1;33mu\033[1;34mo\033[1;35mn\033[1;36mg \033[1;37mD\033[1;36me\033[1;31mv\033[1;34m🍉 - Tool\033[1;31m Vip \033[1;31m\033[1;32m",
+                "\033[1;37mH\033[1;34mu\033[1;35mo\033[1;36mn\033[1;32mg \033[1;33mD\033[1;31me\033[1;37mv\033[1;34m🍉 - Tool\033[1;37m Vip \033[1;31m\033[1;32m",
+                "\033[1;34mH\033[1;33mu\033[1;37mo\033[1;35mn\033[1;31mg \033[1;36mD\033[1;36me\033[1;32mv\033[1;37m🍉 - Tool\033[1;36m Vip \033[1;31m\033[1;32m",
+                "\033[1;36mH\033[1;35mu\033[1;31mo\033[1;34mn\033[1;37mg \033[1;35mD\033[1;32me\033[1;36mv\033[1;33m🍉 - Tool\033[1;33m Vip \033[1;31m\033[1;32m",
+            ]
+            for color in colors:
+                print(f"\r{color}|{remaining_time}| \033[1;31m", end="")
+                time.sleep(0.12)
                         
                         
-    print("                                                ",end = "\r")    
+    print("\r                          \r", end="") 
     print("\033[1;35mĐang Nhận Tiền         ",end = "\r")
-    while True:    
-      try:    
-        nhantien = hoanthanh(ads_id,account_id)
-        break
-      except:
-        pass
-    if(nhantien["status"] == 200):
-      dem += 1
-      tien = nhantien["data"]["prices"]
-      tong += tien
-      local_time = time.localtime()
-      hour = local_time.tm_hour
-      minute = local_time.tm_min
-      second = local_time.tm_sec
-      h = hour
-      m = minute
-      s = second
-      if(hour < 10):
-        h = "0"+str(hour)
-      if(minute < 10):
-        m = "0"+str(minute)
-      if(second < 10):
-        s = "0"+str(second)
-      chuoi = f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | \033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | \033[1;32msuccess\033[1;31m\033[1;97m | \033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |\033[1;32m Ẩn ID\033[1;97m |\033[1;97m \033[1;32m+{tien} \033[1;97m| \033[1;33m{tong}"  
-      print("                                                    ",end = "\r")
+    attempts = 0
+    max_attempts = 2
 
-      print(chuoi)    
-      checkdoiacc = 0  
-    else:
-     
-      while True:
-        try:  
-          baoloi(ads_id,object_id,account_id,nhanjob["data"]["type"])
-          print("                                              ",end = "\r")
-          print("\033[1;31mBỏ Qua Nhiệm Vụ ",end = "\r")
-          sleep(1)
-          checkdoiacc+=1
-          break
-        except:
-          qua = 0
-          pass
+    # Vòng lặp thử lại tối đa max_attempts lần
+    while attempts < max_attempts:
+        try:
+            nhantien = hoanthanh(ads_id, account_id)
+            if nhantien["status"] == 200:
+                # Nếu hoàn thành thành công, cập nhật thông tin và thoát vòng lặp
+                dem += 1
+                tien = nhantien["data"]["prices"]
+                tong += tien
 
+                # Lấy thời gian hiện tại
+                local_time = time.localtime()
+                hour = local_time.tm_hour
+                minute = local_time.tm_min
+                second = local_time.tm_sec
+
+                # Định dạng giờ, phút, giây
+                h = f"{hour:02d}"
+                m = f"{minute:02d}"
+                s = f"{second:02d}"
+
+                # Tạo chuỗi thông báo
+                chuoi = (
+                    f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                    f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                    f"\033[1;31m{nhantien['data']['type']}\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                    f"\033[1;32m Ẩn ID\033[1;97m | \033[1;97m \033[1;32m+{tien} \033[1;97m| "
+                    f"\033[1;33m{tong}"
+                )
+
+                # Xóa dòng trước đó và in thông báo mới
+                print(" " * 60, end="\r")  # Xóa dòng cũ
+                print(chuoi)    
+                checkdoiacc = 0
+                break  # Thoát vòng lặp nếu thành công
+            else:
+                # In toàn bộ response để kiểm tra lý do
+                # print(f"Thử lại lần {attempts + 1}.")
+                if attempts == 0:
+                    for countdown in range(3, -1, -1):
+                        print(f"Vui lòng chờ {countdown} giây để hoàn thành job lần thứ 2", end="\r")
+                        time.sleep(1)
+                    print(" " * 50, end="\r")  # Xóa dòng đếm ngược sau khi hoàn thành
+
+            attempts += 1
+
+        except Exception as e:
+            print(f"Đã xảy ra lỗi: {str(e)}. Thử lại lần {attempts + 1}.")
+            attempts += 1
+            time.sleep(1)  # Thử lại sau 1 giây
+
+    # Nếu hoàn thành thất bại sau 2 lần thử, bỏ qua job và in thông báo
+    if attempts == max_attempts:
+        print("\033[1;31mBỏ Qua Nhiệm Vụ", end="\r")
+        # Xóa dòng thông báo lỗi cũ
+        time.sleep(1)
+
+    # Xử lý trường hợp không hoàn thành
+    if nhantien["status"] != 200:
+        while True:
+            try:
+                baoloi(ads_id, object_id, account_id, nhanjob["data"]["type"])
+                print(" " * 60, end="\r")  # Xóa dòng thông báo lỗi cũ
+                print("\033[1;31mBỏ Qua Nhiệm Vụ", end="\r")
+                time.sleep(1)
+                checkdoiacc += 1
+                break
+            except Exception as e:
+                print(f"Lỗi khi xử lý thông báo lỗi: {str(e)}")
+                time.sleep(1)  # Thử lại sau 1 giây
