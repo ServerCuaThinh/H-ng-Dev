@@ -187,7 +187,6 @@ def da_qua_gio_moi():
     return now >= start_new_day
 
 # Chương trình chính
-# Chương trình chính
 def main():
     # Lấy và hiển thị địa chỉ IP của thiết bị
     ip_address = get_ip_address()
@@ -201,18 +200,19 @@ def main():
             sleep(2)
         else:
             url, key, expiration_date = generate_key_and_url(ip_address)
-            token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
-            yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={url}')
+
+            token_link4m = '66358d4299686f733016d95a'
+            link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={url}')
+            print("\033[1;31mLưu Ý: \033[1;33mTool Free Vượt 1 Lần Hết Lễ Update Nhé")
 
             # Kiểm tra kết quả trả về từ link rút gọn
-            print("\033[1;31mLưu Ý: \033[1;33mKey Free Vượt 1 Lần Hết Lễ Update")
-            if yeumoney_response.status_code == 200:
-                yeumoney_data = yeumoney_response.json()
-                if yeumoney_data.get('status') == "error":
-                    print(yeumoney_data.get('message'))
+            if link4m_response.status_code == 200:
+                link4m_data = link4m_response.json()
+                if link4m_data.get('status') == "error":
+                    print(link4m_data.get('message'))
                     quit()
                 else:
-                    link_key = yeumoney_data.get('shortenedUrl')
+                    link_key = link4m_data.get('shortenedUrl')
                     print('Link Để Vượt Key Là:', link_key)  # Sử dụng dấu phẩy thay vì dấu cộng
             else:
                 print('Không thể kết nối đến dịch vụ rút gọn URL')
