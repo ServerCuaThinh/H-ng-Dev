@@ -205,7 +205,7 @@ def main():
             yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={url}')
 
             # Kiểm tra kết quả trả về từ link rút gọn
-            print("\033[1;31mLưu Ý: \033[1;33mKey Vượt 1 Lần Hết Lễ Update")
+            print("\033[1;31mLưu Ý: \033[1;33mKey Free Vượt 1 Lần Hết Lễ Update")
             if yeumoney_response.status_code == 200:
                 yeumoney_data = yeumoney_response.json()
                 if yeumoney_data.get('status') == "error":
