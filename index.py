@@ -285,45 +285,45 @@ while True:
 	print('\033[1;39m─────────────────────────────────────────────────────────── ')
 	if chon == '1':
 		# Thành Công
-		exec(requests.get('https://run.mocky.io/v3/e94b0a54-9967-4e12-8cfa-4d69eec9006e').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoTikTokv1.py').text)
 	elif chon == '2':
-		exec(requests.get('https://run.mocky.io/v3/fe073faf-cd0d-4ad7-b58c-9d0298e1a08e').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoTikTokv2.py').text)
 	elif chon == '3':
-		exec(requests.get('https://run.mocky.io/v3/64823ca1-2088-4833-927d-f7cf22a83d67').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoIG.py').text)
 	elif chon == '4':
-		exec(requests.get('https://run.mocky.io/v3/5d2abfca-51c4-439a-b9e4-9db8117bfa74').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoX.py').text)
 	elif chon == '5':
-		exec(requests.get('https://run.mocky.io/v3/105c9754-1de0-4138-8d9a-9112edbc6260').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoYTB.py').text)
 	elif chon == '6':
-		exec(requests.get('https://run.mocky.io/v3/00a757b8-bc97-4a21-82be-0814bf9f8794').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoTheads.py').text)
 	elif chon == '7':
-		exec(requests.get('https://run.mocky.io/v3/56bf2b14-f99c-4daf-a3dd-08666f4a9278').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/Full%20Golike/AutoLinkedin.py').text)
 		# TTC
 	elif chon == '8':
-		exec(requests.get('https://run.mocky.io/v3/229a274b-0066-41de-b9cb-9676830fa544').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TuongTacCheo/TTCFB.py').text)
 	elif chon == '9':
-		exec(requests.get('https://run.mocky.io/v3/a2df263e-7605-4137-95e3-e5a6be6141fc').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TuongTacCheo/TTCPro5.py').text)
 	elif chon == '10':
-		exec(requests.get('https://run.mocky.io/v3/0f75fe3c-6673-4ab9-bd29-ba0ad6e3d9db').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TuongTacCheo/TTCPro5v1.py').text)
 	elif chon == '11':
-		exec(requests.get('https://run.mocky.io/v3/17c7e994-5448-4c3d-af5f-6cacc1685fe1').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TuongTacCheo/TTCTikTok.py').text)
 	elif chon == '12':
-		exec(requests.get('https://run.mocky.io/v3/02fffba1-0ddc-4738-ba2d-b2c4e68c58f4').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TuongTacCheo/TTCIG.py').text)
 		# TDS
 	elif chon == '13':
 		# Thanh Công
-		exec(requests.get('https://run.mocky.io/v3/229a274b-0066-41de-b9cb-9676830fa544').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSFullJob.py').text)
 	elif chon == '14':
 		# Thanh Công
-		exec(requests.get('https://run.mocky.io/v3/2b37a119-9e65-4456-b88e-3a1a0ffb4553').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSPro5.py').text)
 	elif chon == '15':
 		# Thanh Công
-		exec(requests.get('https://run.mocky.io/v3/2cf9909e-49e5-441f-a328-e633a5a170ac').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSPro5v1.py').text)
 	elif chon == '16':
 		# Thanh Công
-		exec(requests.get('https://run.mocky.io/v3/77f21c9f-d763-4261-92ed-b339553bb99d').text)
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSTikTok.py').text)
 	elif chon == '17':
 		# Thanh Công
-		exec(requests.get('https://run.mocky.io/v3/d8a33356-044e-444f-bc08-2ebb948632ee').text)	
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/TDSIG.py').text)	
 	else:
 		sys.exit("")
