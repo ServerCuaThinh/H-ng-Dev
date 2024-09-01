@@ -203,7 +203,7 @@ def main():
 
             token_link4m = '66358d4299686f733016d95a'
             link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={url}')
-            print("\033[1;31mLưu Ý: \033[1;33mTool Free Vượt 1 Lần Hết Lễ Update Nhé")
+            print("\033[1;31mLưu Ý: \033[1;33mTool Free Vượt Vượt Key Mỗi Ngày")
             # Kiểm tra kết quả trả về từ link rút gọn
             if link4m_response.status_code == 200:
                 link4m_data = link4m_response.json()
