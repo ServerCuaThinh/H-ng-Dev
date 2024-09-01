@@ -69,8 +69,8 @@ def bes4(url):
         soup = BeautifulSoup(response.content, 'html.parser')
         
         # Tìm thẻ <span> chứa thông tin phiên bản và trạng thái bảo trì
-        version_tag = soup.find('span', id='version0')
-        maintenance_tag = soup.find('span', id='maintenance0')
+        version_tag = soup.find('span', id='version3')
+        maintenance_tag = soup.find('span', id='maintenance3')
         
         # Lấy nội dung văn bản bên trong thẻ
         version = version_tag.text.strip() if version_tag else None
