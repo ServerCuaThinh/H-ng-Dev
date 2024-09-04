@@ -110,133 +110,136 @@ def INSTAGRAM():
         print("\033[97m════════════════════════════════════════════════")
 
         for i in range(choose):
-                job = 'https://gateway.golike.net/api/advertising/publishers/instagram/jobs?instagram_account_id='+str(account_id)+'&data=null'
-                nos = ses.get(job,headers=headers,params=param).json()
-                if nos['status'] ==200:
+            try:
+                job = f'https://gateway.golike.net/api/advertising/publishers/instagram/jobs?instagram_account_id={account_id}&data=null'
+                nos = ses.get(job, headers=headers, params=param).json()
+
+                if nos['status'] == 200:
                     ads_id = nos['data']['id']
                     object_id = nos['data']['object_id']
-                    type = nos['data']['type']
-                    if type == 'follow':
-                        url = 'https://www.instagram.com/api/v1/friendships/create/'+object_id+'/'
+                    job_type = nos['data']['type']
+
+                    if job_type == 'follow':
+                        url = f'https://www.instagram.com/api/v1/friendships/create/{object_id}/'
                         data = {
                             'container_module': 'profile',
                             'nav_chain': 'PolarisFeedRoot:feedPage:8:topnav-link',
                             'user_id': object_id,
                         }
-                        respone = requests.post(url,headers=headerINS,data=data).text
+                        response = requests.post(url, headers=headerINS, data=data).text
                         countdown(DELAY)
-                        if '"status":"ok"' in respone:
-                                url = 'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs'
-                                json_data = {
-                                'instagram_account_id': account_id,
-                                'instagram_users_advertising_id': ads_id,
-                                'async': True,
-                                'data':'null',
-                                }
-                                time.sleep(3)
-                                response = requests.post(
-                                'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs',
-                                headers=headers,
-                                json=json_data,
-                                ).json()
-                                if response['success']==True:
-                                    dem += 1
-                                    local_time = time.localtime()
-                                    hour = local_time.tm_hour
-                                    minute = local_time.tm_min
-                                    second = local_time.tm_sec
-
-                                    # Định dạng giờ, phút, giây
-                                    h = f"{hour:02d}"
-                                    m = f"{minute:02d}"
-                                    s = f"{second:02d}"
-                                    prices =response['data']['prices']
-
-                                    # Cộng dồn giá trị prices vào tổng tiền
-                                    tong += prices
-
-                                    chuoi = (
-                                        f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
-                                        f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-                                        f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
-                                        f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
-                                        f"\033[1;33m{tong} vnđ"
-                                    )
-                                    print(chuoi) 
-                                else:
-                                    skipjob = 'https://gateway.golike.net/api/advertising/publishers/twitter/skip-jobs'
-                                    PARAMS = {
-                                    'ads_id' : ads_id,
-                                    'account_id' : account_id,
-                                    'object_id' : object_id ,
-                                    'async': 'true',
-                                    'data': 'null',
-                                    'type': type,
-                                    }
-                                    checkskipjob = ses.post(skipjob,params=PARAMS).json()
-                                    if checkskipjob['status'] == 200:
-                                        message = checkskipjob['message']
-                                        print(Fore.RED+str(message))
-                                        PARAMSr = {
-                                        'ads_id' : ads_id,
-                                        'account_id' : account_id,
-                                        'object_id' : object_id ,
-                                        'async': 'true',
-                                        'data': 'null',
-                                        'type': type,
-                                        }
-                        else:
-                            print('Cookie HẾT HẠN')
-                            os.remove('COOKIEINS'+str(account_id)+'.txt')
-                            return 0
-                    elif type=='like':
-                        like_id = nos['data']['description']
-                        url = 'https://www.instagram.com/api/v1/web/likes/'+str(like_id)+'/like/'
-                        response = requests.post(url,headers=headerINS).text
-                        countdown(DELAY)
+                        
                         if '"status":"ok"' in response:
-                                url = 'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs'
-                                json_data = {
+                            url = 'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs'
+                            json_data = {
                                 'instagram_account_id': account_id,
                                 'instagram_users_advertising_id': ads_id,
                                 'async': True,
-                                'data':'null',
+                                'data': 'null',
+                            }
+                            time.sleep(3)
+                            response = requests.post(url, headers=headers, json=json_data).json()
+
+                            if response.get('success') == True:
+                                dem += 1
+                                local_time = time.localtime()
+                                h, m, s = [f"{t:02d}" for t in (local_time.tm_hour, local_time.tm_min, local_time.tm_sec)]
+                                prices = response['data']['prices']
+                                tong += prices
+
+                                chuoi = (
+                                    f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                    f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                    f"\033[1;31mfollow\033[1;31m\033[1;32m\033[1;97m | "
+                                    f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                    f"\033[1;33m{tong} vnđ"
+                                )
+                                print(chuoi)
+                            else:
+                                # Xử lý skip job
+                                skipjob = 'https://gateway.golike.net/api/advertising/publishers/twitter/skip-jobs'
+                                params = {
+                                    'ads_id': ads_id,
+                                    'account_id': account_id,
+                                    'object_id': object_id,
+                                    'async': 'true',
+                                    'data': 'null',
+                                    'type': job_type,
                                 }
-                                time.sleep(3)
-                                response = requests.post(
-                                'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs',
-                                headers=headers,
-                                json=json_data,
-                                ).json()
-                                if response['success']==True:
-                                    dem += 1
-                                    local_time = time.localtime()
-                                    hour = local_time.tm_hour
-                                    minute = local_time.tm_min
-                                    second = local_time.tm_sec
+                                checkskipjob = ses.post(skipjob, params=params).json()
 
-                                    # Định dạng giờ, phút, giây
-                                    h = f"{hour:02d}"
-                                    m = f"{minute:02d}"
-                                    s = f"{second:02d}"
-                                    prices =response['data']['prices']
+                                if checkskipjob['status'] == 200:
+                                    print(Fore.RED + str(checkskipjob['message']))
 
-                                    # Cộng dồn giá trị prices vào tổng tiền
-                                    tong += prices
+                        elif '"status":"fail"' in response and '"spam":true' in response:
+                            print(Fore.RED + "Tài khoản này bị nhã Follow")
+                        elif '"status":"fail"' in response and '"require_login":true' in response:
+                            print('Cookie die rồi! Tôi rất tiếc')
+                            os.remove(f'COOKIEINS{account_id}.txt')
+                            return 0
 
-                                    chuoi = (
-                                        f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
-                                        f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
-                                        f"\033[1;32msuccess\033[1;31m\033[1;97m | "
-                                        f"\033[1;31mlike\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
-                                        f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
-                                        f"\033[1;33m{tong} vnđ"
-                                    )
-                                    print(chuoi) 
-                                else:
-                                    skipjob = 'https://gateway.golike.net/api/advertising/publishers/twitter/skip-jobs'
-                                    PARAMS = {
+                    elif job_type == 'like':
+                        like_id = nos['data']['description']
+                        url = f'https://www.instagram.com/api/v1/web/likes/{like_id}/like/'
+                        response = requests.post(url, headers=headerINS).text
+                        countdown(DELAY)
+
+                        if '"status":"ok"' in response:
+                            # Tương tự như trên với 'follow', xử lý 'like' công việc
+                            url = 'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs'
+                            json_data = {
+                            'instagram_account_id': account_id,
+                            'instagram_users_advertising_id': ads_id,
+                            'async': True,
+                            'data':'null',
+                            }
+                            time.sleep(3)
+                            response = requests.post(
+                            'https://gateway.golike.net/api/advertising/publishers/instagram/complete-jobs',
+                            headers=headers,
+                            json=json_data,
+                            ).json()
+                            if response['success']==True:
+                                dem += 1
+                                local_time = time.localtime()
+                                hour = local_time.tm_hour
+                                minute = local_time.tm_min
+                                second = local_time.tm_sec
+
+                                # Định dạng giờ, phút, giây
+                                h = f"{hour:02d}"
+                                m = f"{minute:02d}"
+                                s = f"{second:02d}"
+                                prices =response['data']['prices']
+
+                                # Cộng dồn giá trị prices vào tổng tiền
+                                tong += prices
+
+                                chuoi = (
+                                    f"\033[1;31m\033[1;36m{dem}\033[1;31m\033[1;97m | "
+                                    f"\033[1;33m{h}:{m}:{s}\033[1;31m\033[1;97m | "
+                                    f"\033[1;32msuccess\033[1;31m\033[1;97m | "
+                                    f"\033[1;31mlike\033[1;31m\033[1;32m\033[1;32m\033[1;97m |"
+                                    f"\033[1;32m Ẩn ID\033[1;97m | \033[1;32m+{prices} \033[1;97m| "
+                                    f"\033[1;33m{tong} vnđ"
+                                )
+                                print(chuoi) 
+                            else:
+                                skipjob = 'https://gateway.golike.net/api/advertising/publishers/twitter/skip-jobs'
+                                PARAMS = {
+                                'ads_id' : ads_id,
+                                'account_id' : account_id,
+                                'object_id' : object_id ,
+                                'async': 'true',
+                                'data': 'null',
+                                'type': type,
+                                }
+                                checkskipjob = ses.post(skipjob,params=PARAMS).json()
+                                if checkskipjob['status'] == 200:
+                                    message = checkskipjob['message']
+                                    print(Fore.RED+str(message))
+                                    PARAMSr = {
                                     'ads_id' : ads_id,
                                     'account_id' : account_id,
                                     'object_id' : object_id ,
@@ -244,25 +247,21 @@ def INSTAGRAM():
                                     'data': 'null',
                                     'type': type,
                                     }
-                                    checkskipjob = ses.post(skipjob,params=PARAMS).json()
-                                    if checkskipjob['status'] == 200:
-                                        message = checkskipjob['message']
-                                        print(Fore.RED+str(message))
-                                        PARAMSr = {
-                                        'ads_id' : ads_id,
-                                        'account_id' : account_id,
-                                        'object_id' : object_id ,
-                                        'async': 'true',
-                                        'data': 'null',
-                                        'type': type,
-                                        }
-                        else:
-                            print('Cookie Die Đổi Cookie Khác Chạy Đê')
-                            os.remove('COOKIEINS'+str(account_id)+'.txt')
+                        elif '"status":"fail"' in response and '"spam":true' in response:
+                            print(Fore.RED + "Tài khoản này bị chặn like")
+                        elif '"status":"fail"' in response and '"require_login":true' in response:
+                            print('Cookie die rồi! Tôi rất tiếc')
+                            os.remove(f'COOKIEINS{account_id}.txt')
                             return 0
+                        # pass
+
                 else:
-                        print(nos['message'])
-                        countdown(15)
+                    print(nos['message'])
+                    countdown(15)
+
+            except Exception as e:
+                print(f"Lỗi xảy ra: {str(e)}")
+                continue
 def banner():
  os.system("cls" if os.name == "nt" else "clear")
  banner = f"""
