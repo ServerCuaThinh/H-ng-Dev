@@ -267,6 +267,15 @@ while True:
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m15 \033[1;97m: \033[1;34mTool TDS Pro5v1 \033[1;32m[Online] \033[1;32m[Termux + PC]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m16 \033[1;97m: \033[1;34mTool TDS TikTok \033[1;32m[Online] \033[1;32m[Termux + PC]")
 	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m17 \033[1;97m: \033[1;34mTool TDS Instagram \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print("\033[1;37m╔══════════════════════╗         ")
+	print("\033[1;37m║  \033[1;32mTool Tiện Ích \033[1;37m      ║   ")
+	print("\033[1;37m╚══════════════════════╝           ")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m18 \033[1;97m: \033[1;34mTool Get ID Facebook \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m19 \033[1;97m: \033[1;34mTool Get Token Facebook \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m20 \033[1;97m: \033[1;34mTool Spam Message \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m21 \033[1;97m: \033[1;34mTool Share Ảo Facebook \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m22 \033[1;97m: \033[1;34mTool Đào Mail \033[1;32m[Online] \033[1;32m[Termux + PC]")
+	print(f"\033[1;97m[\033[1;32m*\033[1;97m] \033[1;33m23 \033[1;97m: \033[1;34mThoát Tool \033[1;32m[Online]")
 	print(f"\033[97m════════════════════════════════════════════════════════")
 	chon = input('\033[1;91m┌─╼\033[1;97m[\033[1;91m<\033[1;97m/\033[1;91m>\033[1;97m]--\033[1;91m>\033[1;97m Nhập lựa chọn \033[1;97m \n\033[1;91m└─╼\033[1;91m✈ \033[1;33m : ')
 	print('\033[1;39m─────────────────────────────────────────────────────────── ')
@@ -312,5 +321,24 @@ while True:
 	elif chon == '17':
 		# Thanh Công
 		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/TDSIG.py').text)	
+		# Tiên ích
+	elif chon == '18':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSFullJob.py').text)
+	elif chon == '19':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSPro5.py').text)
+	elif chon == '20':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSPro5v1.py').text)
+	elif chon == '21':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/ToolTDSTikTok.py').text)
+	elif chon == '22':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/TDSIG.py').text)
+	elif chon == '23':
+		# Thanh Công
+		exec(requests.get('https://raw.githubusercontent.com/trinhhuong2004/ShareToolYTB/main/TraoDoiSub/TDSIG.py').text)          
 	else:
 		sys.exit("")
