@@ -199,27 +199,26 @@ def main():
             sleep(2)
         else:
             url, key, expiration_date = generate_key_and_url(ip_address)
-            token_8link = '8c72127ca7e74ebd4b963be7d3cc9f75f4ddd4ead4ee121d9b6ba28a4dfa991b'
-            link8_response = requests.get(f'https://partner.8link.io/api/public/gen-shorten-link?apikey={token_8link}&format=json&url={url}&target_domain=https://8link.io')
-
-            # Kiểm tra kết quả trả về từ link rút gọn
-            print("\033[1;31mLưu Ý: \033[1;33mKey Free Nên Mỗi Ngày Sẽ Thay Đổi Một Key")
-            if link8_response.status_code == 200:
-                link8_data = link8_response.json()
-                if link8_data.get('status') == "error":
-                    print(link8_data.get('message'))
+            token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
+            yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={url}')
+            if yeumoney_response.status_code == 200:
+                yeumoney_data = yeumoney_response.json()
+                if yeumoney_data.get('status') == "error":
+                    print(yeumoney_data.get('message'))
                     quit()
                 else:
-                    link_key = link8_data.get('shortened_url')
-                    token_yeumoney = 'f7e85811bc83948a0a66e121fa312afc03472eabd86a53c4bc9ec86662a480c8'
-                    yeumoney_response = requests.get(f'https://yeumoney.com/QL_api.php?token={token_yeumoney}&format=json&url={link_key}')
-                    if yeumoney_response.status_code == 200:
-                        yeumoney_data = yeumoney_response.json()
-                        if yeumoney_data.get('status') == "error":
-                            print(yeumoney_data.get('message'))
+                    link_key = yeumoney_data.get('shortenedUrl')
+                    token_link4m = '66358d4299686f733016d95a'
+                    link4m_response = requests.get(f'https://link4m.co/api-shorten/v2?api={token_link4m}&format=json&url={link_key}')
+                    print("\033[1;31mLưu Ý: \033[1;33mTool Free Nhé Cả Nhà Yêu \033[1;91m❣\033[1;32m")
+                    # Kiểm tra kết quả trả về từ link rút gọn
+                    if link4m_response.status_code == 200:
+                        link4m_data = link4m_response.json()
+                        if link4m_data.get('status') == "error":
+                            print(link4m_data.get('message'))
                             quit()
                         else:
-                            link_key = yeumoney_data.get('shortenedUrl')
+                            link_key = link4m_data.get('shortenedUrl')
                             print('Link Để Vượt Key Là:', link_key)  # Sử dụng dấu phẩy thay vì dấu cộng
                     else:
                         print('Không thể kết nối đến dịch vụ rút gọn URL')
